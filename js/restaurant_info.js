@@ -2,13 +2,6 @@ let restaurant;
 var newMap;
 
 /**
- * Initialize map as soon as the page is loaded.
- */
-document.addEventListener('DOMContentLoaded', (event) => {  
-  //initMap();
-});
-
-/**
  * Initialize leaflet map
  */
 initMap = () => {
@@ -62,10 +55,14 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const address = document.getElementById('restaurant-address');
   address.innerHTML = restaurant.address;
 
-  const picture = document.getElementById('restaurant-img');
-  const image = document.createElement('image');
-  image.className = 'restaurant-img'
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  const imagediv = document.getElementById('restaurant-img');
+  imagediv.className = 'restaurant-img'
+  imagediv.style.backgroundImage = `url(${DBHelper.imageUrlForRestaurant(restaurant)})`;
+  imagediv.style.backgroundPosition = 'center center';
+  imagediv.style.backgroundRepeat = 'no-repeat';
+  imagediv.style.backgroundSize = 'cover';
+
+  console.log(DBHelper.imageUrlForRestaurant(restaurant));
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -87,10 +84,12 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     const row = document.createElement('tr');
 
     const day = document.createElement('td');
+    day.classList.add('td-day');
     day.innerHTML = key;
     row.appendChild(day);
 
     const time = document.createElement('td');
+    time.classList.add('td-time');
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 

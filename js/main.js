@@ -13,6 +13,19 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 /**
+ * set skip-link to skip maps focusing
+ */
+const skipLink = document.getElementById('skip-map-link');
+function skip() {
+  document.getElementById('neighborhoods-select').focus();
+}
+skipLink.addEventListener('keyup', function (event) {
+  if(event.key === "Enter"){
+    skip();
+  }
+})
+
+/**
  * Fetch all neighborhoods and set their HTML.
  */
 fetchNeighborhoods = () => {
@@ -140,12 +153,17 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
+  const imagediv = document.createElement('div');
+  imagediv.className = 'restaurant-img'
+  imagediv.style.backgroundImage = `url(${DBHelper.imageUrlForRestaurant(restaurant)})`;
+  imagediv.style.backgroundPosition = 'center center';
+  imagediv.style.backgroundRepeat = 'no-repeat';
+  imagediv.style.backgroundSize = 'cover';
 
-
-  const image = document.createElement('img');
-  image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.className = 'restaurant-img';
-  li.append(image);
+  // const image = document.createElement('img');
+  // image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  // image.className = 'restaurant-img';
+  li.append(imagediv);
 
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
