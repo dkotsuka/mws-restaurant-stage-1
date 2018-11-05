@@ -4,6 +4,16 @@ let restaurants,
 var newMap
 var markers = []
 
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("/sw.js")
+  .then(function (reg) {
+    console.log("Successfully registration in scope: " + reg.scope);
+  })
+  .catch(function (err) {
+    console.log(err);
+  });
+}
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -141,9 +151,16 @@ resetRestaurants = (restaurants) => {
  */
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
-  restaurants.forEach(restaurant => {
+  if(restaurants.length > 0){
+    restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
+  } else {
+    const h2 = document.createElement('h2');
+    h2.innerHTML = 'No results found!';
+    ul.append(h2);
+  }
+
   addMarkersToMap();
 }
 
@@ -154,15 +171,14 @@ createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
 
   const imagediv = document.createElement('div');
-  imagediv.className = 'restaurant-img'
+  imagediv.className = 'restaurant-img';
+  imagediv.setAttribute("role", "img");
+  imagediv.setAttribute("alt", "Picture of the restaurant.");
   imagediv.style.backgroundImage = `url(${DBHelper.imageUrlForRestaurant(restaurant)})`;
   imagediv.style.backgroundPosition = 'center center';
   imagediv.style.backgroundRepeat = 'no-repeat';
   imagediv.style.backgroundSize = 'cover';
 
-  // const image = document.createElement('img');
-  // image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  // image.className = 'restaurant-img';
   li.append(imagediv);
 
   const name = document.createElement('h1');
@@ -198,5 +214,4 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
     self.markers.push(marker);
   });
-} 
-
+}

@@ -57,6 +57,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const imagediv = document.getElementById('restaurant-img');
   imagediv.className = 'restaurant-img'
+  imagediv.setAttribute("role", "img");
+  imagediv.setAttribute("alt", "Picture of the restaurant.");
   imagediv.style.backgroundImage = `url(${DBHelper.imageUrlForRestaurant(restaurant)})`;
   imagediv.style.backgroundPosition = 'center center';
   imagediv.style.backgroundRepeat = 'no-repeat';
