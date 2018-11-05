@@ -4,11 +4,11 @@ this.addEventListener("install", function (event) {
 	event.waitUntil(
 	    caches.open(cacheVersion).then(function(cache) {
 	      return cache.addAll([
-	      	"/",
-	      	"/data/restaurants.json",
-	      	"/img/",
-	      	"/js/main.js",
-	      	"/js/restaurant_info.js"
+	      	"/mws-restaurant-stage-1/",
+	      	"/mws-restaurant-stage-1/data/restaurants.json",
+	      	"/mws-restaurant-stage-1/img/",
+	      	"/mws-restaurant-stage-1/js/main.js",
+	      	"/mws-restaurant-stage-1/js/restaurant_info.js"
 	      ]);
 	    })
 	);

@@ -5,7 +5,7 @@ var newMap
 var markers = []
 
 if("serviceWorker" in navigator){
-  navigator.serviceWorker.register("/sw.js")
+  navigator.serviceWorker.register("/mws-restaurant-stage-1/sw.js")
   .then(function (reg) {
     console.log("Successfully registration in scope: " + reg.scope);
   })
