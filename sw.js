@@ -1,6 +1,8 @@
+const currentCacheVersion = "v1-05-11-2018";
+
 this.addEventListener("install", function (event) {
 	event.waitUntil(
-	    caches.open("v1-05-11-2018").then(function(cache) {
+	    caches.open(currentCacheVersion).then(function(cache) {
 	      return cache.addAll([
 	      	"/mws-restaurant-stage-1/",
 	    	"/mws-restaurant-stage-1/css/styles.css",
@@ -38,6 +40,20 @@ this.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request).then(function(response) {
       return response || fetch(event.request);
+    })
+  );
+});
+
+this.addEventListener('activate', function(event) {
+  const cacheWhitelist = [currentCacheVersion];
+
+  event.waitUntil(
+    caches.keys().then(function(keyList) {
+      return Promise.all(keyList.map(function(key) {
+        if (cacheWhitelist.indexOf(key) === -1) {
+          return caches.delete(key);
+        }
+      }));
     })
   );
 });

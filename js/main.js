@@ -156,9 +156,9 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
     ul.append(createRestaurantHTML(restaurant));
   });
   } else {
-    const h2 = document.createElement('h2');
-    h2.innerHTML = 'No results found!';
-    ul.append(h2);
+    const msg = document.createElement('p');
+    msg.innerHTML = 'No results found!';
+    ul.append(msg);
   }
 
   addMarkersToMap();
@@ -173,7 +173,7 @@ createRestaurantHTML = (restaurant) => {
   const imagediv = document.createElement('div');
   imagediv.className = 'restaurant-img';
   imagediv.setAttribute("role", "img");
-  imagediv.setAttribute("alt", "Picture of the restaurant.");
+  imagediv.setAttribute("aria-label", "Picture of the restaurant.");
   imagediv.style.backgroundImage = `url(${DBHelper.imageUrlForRestaurant(restaurant)})`;
   imagediv.style.backgroundPosition = 'center center';
   imagediv.style.backgroundRepeat = 'no-repeat';
@@ -181,7 +181,7 @@ createRestaurantHTML = (restaurant) => {
 
   li.append(imagediv);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -195,6 +195,8 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
   const more = document.createElement('a');
+  more.setAttribute("role", "button")
+  more.setAttribute("aria-label", `More details about ${restaurant.name}.`);
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
   li.append(more)
