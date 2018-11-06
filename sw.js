@@ -1,8 +1,6 @@
-const cacheVersion = "v1-05-11-2018";
-
 this.addEventListener("install", function (event) {
 	event.waitUntil(
-	    caches.open(cacheVersion).then(function(cache) {
+	    caches.open("v1-05-11-2018").then(function(cache) {
 	      return cache.addAll([
 	      	"/mws-restaurant-stage-1/",
 	      	"/mws-restaurant-stage-1/data/restaurants.json",
