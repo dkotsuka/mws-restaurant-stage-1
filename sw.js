@@ -19,7 +19,16 @@ this.addEventListener("install", function (event) {
 	      	"/mws-restaurant-stage-1/js/dbhelper.js",
 	      	"/mws-restaurant-stage-1/js/restaurant_info.js",
 	      	"/mws-restaurant-stage-1/index.html",
-	      	"/mws-restaurant-stage-1/restaurant.html"
+	      	"/mws-restaurant-stage-1/restaurant.html?id=1",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=2",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=3",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=4",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=5",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=6",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=7",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=8",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=9",
+	      	"/mws-restaurant-stage-1/restaurant.html?id=10"
 	      ]);
 	    })
 	);
