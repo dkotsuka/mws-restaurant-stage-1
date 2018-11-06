@@ -2,7 +2,7 @@ let restaurant;
 var newMap;
 
 /**
- * Initialize leaflet map
+ * Initialize map
  */
 initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
@@ -63,8 +63,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   imagediv.style.backgroundPosition = 'center center';
   imagediv.style.backgroundRepeat = 'no-repeat';
   imagediv.style.backgroundSize = 'cover';
-
-  console.log(DBHelper.imageUrlForRestaurant(restaurant));
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
