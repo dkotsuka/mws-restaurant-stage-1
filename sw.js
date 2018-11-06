@@ -1,4 +1,4 @@
-const currentCacheVersion = "v1-05-11-2018";
+const currentCacheVersion = "v2-06-11-2018";
 
 this.addEventListener("install", function (event) {
 	event.waitUntil(
