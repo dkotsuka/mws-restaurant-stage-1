@@ -2,6 +2,7 @@ this.addEventListener("install", function (event) {
 	event.waitUntil(
 	    caches.open("v1-05-11-2018").then(function(cache) {
 	      return cache.addAll([
+	      	"/mws-restaurant-stage-1/",
 	    	"/mws-restaurant-stage-1/css/styles.css",
 	      	"/mws-restaurant-stage-1/data/restaurants.json",
 	      	"/mws-restaurant-stage-1/img/1.jpg",
